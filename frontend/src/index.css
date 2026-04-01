@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  @keyframes liquid-drift {
+    0% { 
+      transform: translate(0, 0) rotate(0deg) scale(1); 
+    }
+    33% { 
+      transform: translate(10vw, 5vh) rotate(10deg) scale(1.1); 
+    }
+    66% { 
+      transform: translate(-5vw, 15vh) rotate(-10deg) scale(0.95); 
+    }
+    100% { 
+      transform: translate(0, 0) rotate(0deg) scale(1); 
+    }
+  }
+
+  .animate-liquid {
+    /* 15 seconds is the 'sweet spot'—visible but calm */
+    animation: liquid-drift 15s infinite ease-in-out;
+  }
+
+  @keyframes scan {
+  from { transform: translateY(-100vh); }
+  to { transform: translateY(100vh); }
+    }
+}
+
+@layer base {
+  body {
+    /* This pulls the 'neutral' color directly from your claimgen theme */
+    color: theme('colors.neutral'); 
+    background-color: theme('colors.base-100');
+  }
+
+  /* Create a custom class that Tailwind can't confuse with its own */
+  .text-ink {
+    color: #2d2424 !important;
+  }
+}
+

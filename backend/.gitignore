@@ -1,0 +1,15 @@
+# This ignores node_modules in the root, /frontend, and /backend automatically
+node_modules/
+
+# Ignore environment variables in both folders
+.env
+frontend/.env
+backend/.env
+
+# Ignore build/dist folders
+frontend/dist/
+frontend/build/
+backend/dist/
+
+# Logs
+*.log
