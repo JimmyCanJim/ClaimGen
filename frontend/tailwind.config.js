@@ -14,14 +14,14 @@ export default {
     themes: [
       {
         claimgen: {
-          "primary": "#5d4037",       
-          "secondary": "#a89078",     
-          "accent": "#b45309",        
-          "neutral": "#2d2424",       
-          "base-100": "#fdfaf6",      // This is the paper color
-          "base-200": "#f5f0e1",      
-          "base-300": "#e7dfcc",      
-          "base-content": "#2d2424",  // 👈 This is your Ink color
+          "primary": "#5d4037",       // Coffee Brown
+          "secondary": "#a89078",     // Tan
+          "neutral": "#2d2424",       // Ink Brown
+          "base-100": "#fdfaf6",      // Paper Beige
+          "base-200": "#f5f0e1",      // Card Beige
+          "base-content": "#2d2424",  // Standard Ink
+          "--rounded-box": "0.5rem",
+          "--rounded-btn": "0.3rem",  // 👈 This is your Ink color
           
           "info": "#60a5fa",
           "success": "#15803d",

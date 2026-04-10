@@ -73,7 +73,7 @@ export const createClaim = async (req, res) => {
         const newClaim = new Claim({
             claimNumber: await generateVerifiedId(), // Use the generator we built
             assessor: req.user._id,
-            assReference: dasNumber,
+            dasNumber: dasNumber,
             client: {
                 firstName,
                 lastName,
@@ -95,5 +95,15 @@ export const createClaim = async (req, res) => {
     } catch (error) {
         console.error("Mapping Error:", error.message);
         res.status(500).json({ error: error.message });
+    }
+};
+
+export const getAllClaims = async (req, res) => {
+    try {
+        const claims = await Claim.find({assessor: req.user._id}).sort({createdAt : -1});
+        res.status(200).json(claims);
+    } catch (error) {
+        console.error("Error fetching claim data:", error.message);
+        res.status(500).json({ error: "Failed to retrieve the claim data." });
     }
 };

@@ -12,18 +12,20 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div data-theme = "claimgen" className='min-h-screen relative bg-base-100 text-base-content'>
+    <div data-theme = "claimgen" className='min-h-screen relative'>
       <Toaster/>
       <AnimatedBackground/>
 
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path = "/" element = {<AuthPage/>}></Route>
-          <Route path = "/dashboard/manageclaims" element = {<ManageClaims/>}></Route>
-          <Route path = "/dashboard" element={<Dashboard/>}></Route>
-          <Route path = "/dashboard/createclaim" element={<CreateClaim/>}></Route>
-        </Routes>
-      </AnimatePresence>
+      <main className='relative z-10'>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path = "/" element = {<AuthPage/>}></Route>
+            <Route path = "/dashboard/manageclaims" element = {<ManageClaims/>}></Route>
+            <Route path = "/dashboard" element={<Dashboard/>}></Route>
+            <Route path = "/dashboard/createclaim" element={<CreateClaim/>}></Route>
+          </Routes>
+        </AnimatePresence>
+      </main>
     </div>
   )
 

@@ -104,26 +104,45 @@ const CreateClaim = () => {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-lg bg-base-200/50 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-2xl"
+        className="w-full max-w-lg backdrop-blur-xl p-8 rounded-2xl "
+        style={{
+          backgroundColor: 'var(--color-card-bg)',
+          border: '1px solid var(--color-card-border)',
+          boxShadow: '0 4px 6px -1px var(--color-card-shadow-heavy)'          
+        }}
       >
-        <button onClick={() => navigate('/dashboard')} className="btn btn-ghost btn-sm gap-2">
+        <button 
+          onClick={() => navigate('/dashboard')} 
+          className="btn p-5 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+          style={{
+            color: 'var(--color-accent-soft)',
+            backgroundColor: 'var(--color-leather)'
+          }}>
+          
           <ArrowLeft size={18} /> Back
         </button>
 
         {/* Header */}
         <div className="
           mx-auto      
-          mt-10       
-          mb-10       
+          mt-6       
+          mb-8     
           max-w-2xl    
           p-10         
           border      
-          rounded-3xl  
-          bg-base-200  
+          rounded-xl
           items-center
-          ">
-          <h2 className="text-2xl flex font-bold text-primary justify-center mb-2">New Claim Submission</h2>
-          <span className="text-sm flex font-mono opacity-50 justify-center">Reference: {claimId}</span>
+          "
+          style={{
+            backgroundColor: 'var(--color-card-darker',
+            borderColor: 'var(--color-card-border)',
+            boxShadow: '0 10px 25px -5px var(--color-card-shadow-heavy)'}}>
+          <h2 
+            className="text-2xl flex font-bold text-primary justify-center mb-2"
+            style={{color: 'var(--color-leather)'}}>New Claim Submission</h2>
+          <span 
+            className="flex font-mono opacity-80 justify-center"
+            style={{color: 'var(--color-leather-soft)'}}>Reference: {claimId}</span>
         </div>
 
         <div className = "flex flex-col font-bold text-primary">
@@ -133,13 +152,15 @@ const CreateClaim = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Client Name */}
           <div className="form-control">
-            <label className="label text-xs uppercase tracking-widest opacity-60">Client Name</label>
+            <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Client Name</label>
             <div className="relative">
               <FileText className="absolute left-3 top-3.5 opacity-40" size={20} />
               <input 
-                type="text" name="clientName" required
+                type="text" 
+                name="clientName" 
+                required
                 placeholder="Name & Surname"
-                className="input input-bordered w-full pl-12 bg-base-300/50 focus:border-primary transition-all"
+                className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                 onChange={handleChange}
               />
             </div>
@@ -147,12 +168,12 @@ const CreateClaim = () => {
 
           {/* DAS Number */}
           <div className="form-control">
-            <label className="label text-xs uppercase tracking-widest opacity-60">DAS No.</label>
+            <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>DAS No.</label>
             <div className="relative">
               <input 
                 type="text" name="dasNumber" required
                 placeholder="123-456-789"
-                className="input input-bordered w-full pl-12 bg-base-300/50"
+                className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                 onChange={handleChange}
               />
             </div>
@@ -160,7 +181,7 @@ const CreateClaim = () => {
 
           {/* Phone number */}
           <div className="form-control">
-            <label className="label text-xs uppercase tracking-widest opacity-60">Phone Number/s</label>
+            <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Phone Number/s</label>
           
               <div className="space-y-3">
                   {formData.phoneNumbers.map((phone, index) => (
@@ -171,7 +192,7 @@ const CreateClaim = () => {
                           type="text" 
                           value={phone}
                           placeholder="+27 00 000 0000"
-                          className="input input-bordered w-full pl-10 bg-base-300/50"
+                          className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                           onChange={(e) => handlePhoneChange(index, e.target.value)}
                           required
                         />
@@ -203,12 +224,12 @@ const CreateClaim = () => {
                 
               {/* Email */}
               <div className='form-control'>
-                <label className="label text-xs uppercase tracking-widest opacity-60">Email</label>
+                <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Email</label>
                 <div className="relative">
                   <input 
                     type="text" name="email" required
                     placeholder="example@email.com"
-                    className="input input-bordered w-full pl-12 bg-base-300/50"
+                    className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                     onChange={handleChange}
                   />
                 </div>
@@ -216,12 +237,12 @@ const CreateClaim = () => {
               
               {/* Address */}
               <div className='form-control'>
-                  <label className='label text-xs uppercase tracking-widest opacity-60'>Address</label>
+                  <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Address</label>
                   <div className='relative'>
                     <input
                       type="text" name="address" required
                       placeholder="6925 Hollywood Blvd"
-                      className="input input-bordered w-full pl-12 bg-base-300/50"
+                      className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                       onChange={handleChange}
                     />
                     
@@ -230,13 +251,13 @@ const CreateClaim = () => {
 
               {/* Insurance Provider */}
               <div className='form-control'>
-                <label className='label text-xs uppercase tracking-widest opacity-60'>Insurance Provider</label>
+                <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Insurance Provider</label>
                 <div className='relative'>
 
                   <select
                     name="insuranceProvider"
                     required
-                    className='select select-border w-full pl-12 bg-base-300/50 font-normal focus:border-primary'
+                    className='select select-border rounded-xl w-full pl-12 ledger-input-dark font-normal focus:border-primary'
                     onChange={handleChange}
                     value={formData.insuranceProvider}
                   >
@@ -256,12 +277,12 @@ const CreateClaim = () => {
 
               {/* Advisor */}
               <div className='form-control'>
-                <label className='label text-xs uppercase tracking-widest opacity-60'>Advisor</label>
+                <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Advisor</label>
                 <div className='relative'>
                   <input
                     type="text" name="advisor" required
                     placeholder="Name & Surname"
-                    className="input input-bordered w-full pl-12 bg-base-300/50"
+                    className="input w-full pl-12 rounded-xl transition-all ledger-input-dark"
                     onChange={handleChange}
                   />
                 </div>
@@ -269,11 +290,11 @@ const CreateClaim = () => {
 
               {/* Nature of Claim */}
               <div className='form-control'>
-                <label className='label text-xs uppercase tracking-widest opacity-60'>Nature of Claim</label>
+                <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Nature of Claim</label>
                 <select
                     name="natureOfClaim"
                     required
-                    className='select select-border w-full pl-12 bg-base-300/50 font-normal focus:border-primary'
+                    className='select select-border rounded-xl w-full pl-12 ledger-input-dark font-normal focus:border-primary'
                     onChange={handleChange}
                     value={formData.natureOfClaim}
                   >
@@ -298,7 +319,7 @@ const CreateClaim = () => {
                     className='overflow-hidden'  
                     >
                     <div className='form-control mt-4'>
-                      <label className='label text-xs uppercase tracking-widest opacity-60'>Specify Insurance Provider</label>
+                      <label className="label font-bold text-[10px] uppercase tracking-widest" style={{color: "var(--color-accent)"}}>Specify Insurance Provider</label>
                       <div className='relative'>
                         <input
                           type='text'
@@ -318,9 +339,13 @@ const CreateClaim = () => {
 
 
           <button 
-            type="openClaim" 
+            type="submit" 
             disabled={loading}
-            className={`btn btn-primary w-full gap-2 text-lg ${loading ? 'loading' : ''}`}
+            className={`btn btn-primary w-full gap-2 text-lg transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 ${loading ? 'loading' : ''}`}
+            style={{
+              color: 'var(--color-accent-soft)',
+              backgroundColor: 'var(--color-leather)'
+            }}
           >
             {loading ? 'Processing...' : <><Send size={20} />Open Claim</>}
           </button>

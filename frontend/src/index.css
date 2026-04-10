@@ -43,3 +43,99 @@
   }
 }
 
+:root {
+  /* THE VINTAGE LEDGER PALETTE */
+  --color-paper: #fdfaf6;     
+  --color-folder: #f7dd98; 
+
+  --color-ink: #2d2424;  
+  --color-ink-secondary: #4a403d; 
+  --color-pencil: #6e6562;  
+  --color-pencil-light: #9e9591;
+  
+  --color-success-ink: #3e5c4a;
+  --color-error-ink: #8c3030;
+  --color-blueprint: #2c4a70;
+
+  --color-leather: #5d4037; 
+  --color-leather-soft: #867f7c;  
+  --color-accent: #b45309;
+  --color-accent-mid: #cc8e35; 
+  --color-accent-light: #e29a56;  
+  --color-accent-soft: #f4c28d;  
+  
+  /* GRID SETTINGS */
+  --grid-color: rgba(45, 36, 36, 0.08);
+
+  --color-shadow: rgba(93, 64, 55, 0.08);
+  --color-highlight: #fcf1b8;
+
+  --color-card-bg: #ede4d3;         /* Aged Manila - the main surface */
+  --color-card-darker: #e2d6bf;     /* Weathered Paper - for headers/sections */
+  --color-card-border: #b69a66;     /* Heavy Cardstock Edge */
+  
+  /* TEXT ON DARKER CARDS */
+  --color-ink-deep: #1a1515;        /* Near-black ink for maximum legibility */
+  
+  /* SHADOWS (Increased Weight) */
+  --color-card-shadow-heavy: rgba(74, 58, 48, 0.25);
+
+  --color-input-bg : #f0ebaf;
+}
+
+/* GLOBAL DEFAULTS */
+body {
+  background-color: transparent;
+  color: var(--color-ink);
+  font-family: 'Inter', sans-serif; /* Or a classic Serif for the ledger feel */
+  margin: 0;
+}
+
+h1, h2, h3 {
+  color: var(--color-ink);
+  font-weight: 900;
+}
+
+.blueprint-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-paper);
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Targets all inputs */
+input::placeholder {
+  color: #643c00; /* Or your variable: var(--color-accent-mid) */
+  opacity: 1;    /* Ensures the color is solid and true */
+}
+
+.ledger-input-dark {
+  background-color: var(--color-input-bg) !important; /* The darker #f5f0e1 */
+  border: 1px solid rgba(45, 36, 36, 0.4) !important; /* Pronounced ink border */
+  color: var(--color-ink);
+  outline: none !important;
+  transition: border-color 0.4s ease;
+}
+
+.ledger-input-dark:focus {
+  border-color: var(--color-leather) !important;
+  box-shadow: none !important;
+}
+
+.ledger-input-dark::placeholder {
+  color: var(--color-ink);
+  opacity: 0.3;
+}
